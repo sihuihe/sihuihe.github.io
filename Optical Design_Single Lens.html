@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Sihui's Webpage</title>
+
+    <link rel="stylesheet" type='text/css' href="bootstrap.css">
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <style>
+        img {
+            display: block;
+            max-width: 500px;
+            max-height: 400px;
+            width: auto;
+            height: auto;
+        }
+        body {
+            background-color:#87c8f8 ;
+        }
+      </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Welcome to Sihui's Optical Design</h1>
+    <ul class="nav nav-pills">
+        <li role="presentation"><a href="Home.html">Home</a></li>
+        <li role="presentation" class="dropdown active" >
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Optical Design<b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="Optical Design_Single Lens.html">Single Lens</a></li>
+                <li><a href="Optical Design_Three Lenses.html">Three Lenses</a></li>
+            </ul>
+        </li>
+        <li role="presentation"><a href="Arduino.html">Arduino Project</a></li>
+        <li role="presentation"><a href="Traveling.html">Traveling</a></li>
+        <li role="presentation"><a href="Drawing.html">Drawing</a></li>
+
+        <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Professional websites<b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="https://www.linkedin.com/in/sihuihe">LinkedIn</a></li>
+                <li><a href="https://scholar.google.com/citations?user=B8gr8pYAAAAJ&hl=en">Google Scholar</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3> I like to share my learning of optical design with you </h3>
+    <h5> Reference book: "Practical Computer-Aided Lens Design" by Gregory Hallock Smith </h5>
+    <h4> Single lens camera </h4>
+    <p>Design a camera with F/16 and EFL = 80mm, total FOV = 53 degree, flat image surface, wavelength = 0.4, 0.44, 0.49, 0.56, 0.68, reference wavelength = 0.49um
+    </p>
+    <p> As it is a single lens, a large F# is needed to get a good image quality
+    </p>
+    <h5>1st step:</h5>
+    <p> Assume aperture is at the lens. This can help to reduce lateral color and distortion. Optimize the lens with EFFL = 80 to ensure the right focal length, and the thickness of glass < 1mm to prevent the non-reasonable thick lens. Then I get
+    </p>
+    <img src="img\Lens Design\1_1 lens.png" class="img-responsive" >
+    <p></p>
+    <img src="img\Lens Design\1_2 lens.png" class="img-responsive" style="width:60%">
+    <p> From the 3D layout, we can obviously find the Petzval field curvature aberration.Look at the ray fan:
+    </p>
+    <img src="img\Lens Design\1_3 lens.png" class="img-responsive" style="width:60%">
+    <p></p>
+    <img src="img\Lens Design\1_4 lens.png" class="img-responsive" style="width:60%">
+    <p> As there's little aberration at 0 degree, it means little spherical aberration.</p>
+    <p> The linear shape of aberration at large angle looks like defocus increases with angle, which is due to the Petzval field curvation aberration, consistent with what we find on the layout.</p>
+    <p> The different aberration at x and y direction shows astigmatism.</P>
+    <p> Coma is U shape. It is not obvious here.</p>
+    <p> Distortion only causes lateral shift. It is hard to observe from there.</p>
+    <p> The spot diagram shows large spot size at off-axis</p>
+    <img src="img\Lens Design\1_5 lens.png" class="img-responsive" style="width:60%">
+    <h5>2nd step:</h5>
+    <p>To correct the aberration, one way is to make the incident angle smaller. We can add another variable -- the position of the stop.</p>
+    <p>Stop in front of the positive lens lends to barrel distortion</p>
+    <p>Stop after the positive lens leads to pincushion distortion, which is more subjectively disturbing as the picture looks like flying apart. So we add the stop in the front.</p>
+    <p>After optimization, I get</p>
+    <img src="img\Lens Design\1_6 lens.png" class="img-responsive" style="width:80%">
+    <p></p>
+    <img src="img\Lens Design\1_7 lens.png" class="img-responsive" style="width:60%">
+    <p>The field curvature improves.</p>
+    <img src="img\Lens Design\1_8 lens.png" class="img-responsive" style="width:60%">
+    <p></p>
+    <img src="img\Lens Design\1_9 lens.png" class="img-responsive" style="width:60%">
+    <p>On-axis: spherical aberration balanced by defocus, chromatic dispersion</p>
+    <p>Off-axis: Tangential field (Y axis) shows u shape, which indicates coma</p>
+    <p>Sagittal field (x axis): field curvature (defocus increases with angle)</p>
+    <p> The spot diagram shows large spot size and coma at off-axis</p>
+    <img src="img\Lens Design\1_10 lens.png" class="img-responsive" style="width:60%">
+    <p>The field curvature and distortion is shown as follows</p>
+    <img src="img\Lens Design\1_11 lens.png" class="img-responsive" style="width:60%">
+    <p>The max distortion is ~ 2%, which is acceptable in camera</p>
+    <p>The FFT MTF is shown here</p>
+    <img src="img\Lens Design\1_12 lens.png" class="img-responsive" style="width:60%">
+    <p>The MTF is not good enough, so we need to increase the number of lens.</p>
+
+
+</div>
+</body>
+
+</html>

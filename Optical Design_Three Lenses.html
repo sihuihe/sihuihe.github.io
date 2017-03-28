@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Sihui's Webpage</title>
+
+    <link rel="stylesheet" type='text/css' href="bootstrap.css">
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+        },
+        "HTML-CSS": { availableFonts: ["TeX"] }
+        });
+    </script>
+    <script type="text/javascript" async src="MathJax-master/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <style>
+        img {
+            display: block;
+            max-width: 500px;
+            max-height: 400px;
+            width: auto;
+            height: auto;
+        }
+        body {
+            background-color:#87c8f8 ;
+        }
+      </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Welcome to Sihui's Optical Design</h1>
+    <ul class="nav nav-pills">
+        <li role="presentation"><a href="Home.html">Home</a></li>
+        <li role="presentation" class="dropdown active" >
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Optical Design<b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="Optical Design_Single Lens.html">Single Lens</a></li>
+                <li><a href="Optical Design_Three Lenses.html">Three Lenses</a></li>
+            </ul>
+        </li>
+        <li role="presentation"><a href="Arduino.html">Arduino Project</a></li>
+        <li role="presentation"><a href="Traveling.html">Traveling</a></li>
+        <li role="presentation"><a href="Drawing.html">Drawing</a></li>
+
+        <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Professional websites<b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="https://www.linkedin.com/in/sihuihe">LinkedIn</a></li>
+                <li><a href="https://scholar.google.com/citations?user=B8gr8pYAAAAJ&hl=en">Google Scholar</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3> I like to share my learning of optical design with you </h3>
+    <h5> Reference book: "Practical Computer-Aided Lens Design" by Gregory Hallock Smith </h5>
+    <h4> Three-lens camera </h4>
+    <p>Design a camera with F/3.5 and EFL (effective focal length) = 52mm, total FOV = 45.2 degree, flat image surface, wavelength = 0.45, 0.5, 0.55, 0.6, 0.65, reference wavelength = 0.55um
+    </p>
+    <p> As it contains three lenses, a smaller F# (3.5) is possible to get a good image quality.
+    </p>
+    <h5>1st step:</h5>
+    <p> Choice of glasses: To correct chromatic dispersion, use crown and flint glasses with +ve and -ve lenses. To reduce field curvature and generally other aberrations, use high index glasses. Therefore, we choose crown glass LaFN 21(n=1.788, V=47.5) and flint glass SF53(n=1.728, V=28.7), which are among Schott's preferred glass types.
+    </p>
+    <p>First order optics: As we need a positive system power, and a symmetric design about the stop can help reduce coma, lateral color and distortion, we choose the three lenses to be positive, negative, and positive, respectively. A simple 1st order layout is to have the positive lens with EFL = 52mm, negative lens with EFL = -52mm, and the third lens with the same power as the first one. To simplify the calculation, let the 1st and 3rd lens to be plano-convex lens with flat surface inside, the two surfaces of the 2nd lens have the same curvature but opposite signs.</p>
+    <p>The focal lens of a thin lens is given by</p>
+    $\frac{1}{f}=(n-1)*[\frac{1}{R_1}-\frac{1}{R_2}]$
+    <p>where $f$ is the focal length, $R_1, R_2$ are the radius of the two surfaces of the lens. Hence I get the initial state as:</p>
+    <img src="img\Lens Design\3_1 lens.png" class="img-responsive" style="width:80%">
+    <p></p>
+    <img src="img\Lens Design\3_2 lens.png" class="img-responsive" style="width:60%"> 
+    <p> 2nd step:</p>
+    <p>Start optimization: set up the gaps using optimization wizard.</p>
+    <img src="img\Lens Design\3_3 lens.png" class="img-responsive" style="width:80%"> 
+    <p>Confine the center thickness of the lens to be in the range of 1/10 - 1/5 of its diameter, and set the EFL = 52mm. </p>
+    <img src="img\Lens Design\3_4 lens.png" class="img-responsive" style="width:60%"> 
+    <p>After optimization, I get the following result:</p>
+    <img src="img\Lens Design\3_5 lens.png" class="img-responsive" style="width:80%"> 
+    <p></p>
+    <img src="img\Lens Design\3_6 lens.png" class="img-responsive" style="width:60%"> 
+    <p>Spot diagram:</p>
+    <img src="img\Lens Design\3_7 lens.png" class="img-responsive" style="width:60%"> 
+    <p>Ray aberration:</p>
+    <img src="img\Lens Design\3_8 lens.png" class="img-responsive" style="width:60%"> 
+    <p></p>
+    <img src="img\Lens Design\3_9 lens.png" class="img-responsive" style="width:60%"> 
+    <p>Field curvature and distortion:</p>
+    <img src="img\Lens Design\3_10 lens.png" class="img-responsive" style="width:60%"> 
+    <p>The major aberrations are: spherical, chromatic,  coma, astigmatism and distortion.</p>
+    <p>Intermediate optimization: Change the pickup solve into variables, optimize for chromatic, spherical, and distortion.</p>
+    <img src="img\Lens Design\3_11 lens.png" class="img-responsive" style="width:60%">
+    <p>I get:</p>
+    <img src="img\Lens Design\3_12 lens.png" class="img-responsive" style="width:60%">
+    <p></p>
+    <img src="img\Lens Design\3_13 lens.png" class="img-responsive" style="width:40%">
+    <p></p>
+    <img src="img\Lens Design\3_14 lens.png" class="img-responsive" style="width:60%">
+    <p></p>
+    <img src="img\Lens Design\3_15 lens.png" class="img-responsive" style="width:60%">
+    <p>Final optimization: Use vignetting to improve the edge field of view. Set the vignetting to 0.3 at the edge of the field. Typically, 50% vignetting at the edge is acceptable. Remove the chromatic correction and spherical aberration operands in Merit function, leaving only the lens thickness, focal length, and distortion operands. Use RMS wavefront in the optimization wizard to optimize for MTF, and the weight of the four fields to be 4:3:2:1.</p>
+    <img src="img\Lens Design\3_21 lens.png" class="img-responsive" style="width:60%">
+    <p>I get:</p>
+    <img src="img\Lens Design\3_22 lens.png" class="img-responsive" style="width:60%">
+    <p></p>
+    <img src="img\Lens Design\3_23 lens.png" class="img-responsive" style="width:40%">
+    <p> FFT MTF is:</p>
+    <img src="img\Lens Design\3_24 lens.png" class="img-responsive" style="width:60%">
+    <p></p>
+
+</div>
+</body>
+
+</html>
