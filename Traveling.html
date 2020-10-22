@@ -6,17 +6,12 @@
     <script src="jquery.min.js"></script>
     <script src="bootstrap.min.js"></script>
     <style>
-        img {
-            display: block;
-            max-width: 500px;
-            max-height: 400px;
-            width: auto;
-            height: auto;
-        }
-
         body {
             background-image: url('img/background.jpg');
-        }
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            }
     </style>
 </head>
 
@@ -34,6 +29,14 @@
             </ul>
         </li>
         <li role="presentation"><a href="Arduino.html">Arduino Project</a></li>
+        <li role="presentation" class="dropdown" >
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Piano<b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="Piano_Pop songs.html">Pop Songs</a></li>
+                <li><a href="Piano_Classical.html">Classical</a></li>
+            </ul>
+        </li>
+        <li role="presentation"><a href="Speech.html">Toastmaster Speech</a></li>
         <li role="presentation" class="active"><a href="Traveling.html">Traveling</a></li>
         <li role="presentation"><a href="Drawing.html">Drawing</a></li>
 
